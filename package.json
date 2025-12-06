@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/svelte": "^5.2.9",
     "@tsconfig/svelte": "^5.0.6",
+    "@types/jszip": "^3.4.0",
     "@types/node": "^24.10.1",
     "@types/papaparse": "^5.5.1",
     "jsdom": "^27.2.0",
@@ -28,5 +29,8 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
   }
 }
