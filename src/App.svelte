@@ -190,6 +190,40 @@
     examTypeView === 'midterm' ? midtermExams : finalExams
   );
 
+  // Check if a conflict is actually a same-time group (subjects meant to be together)
+  function isSameTimeGroupConflict(conflict: ScheduleConflict): boolean {
+    if (!rules || !rules.sameTimeGroups.length) return false;
+    
+    const conflictCodes = conflict.subjects.map(s => s.code);
+    
+    // Check if ALL conflict subjects belong to the same same-time group
+    for (const group of rules.sameTimeGroups) {
+      const allInGroup = conflictCodes.every(code => group.includes(code));
+      if (allInGroup && conflictCodes.length >= 2) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Categorize conflicts: real conflicts (errors) vs same-time groups (info)
+  let categorizedConflicts = $derived(() => {
+    if (!scheduleResult) return { realConflicts: [], sameTimeConflicts: [] };
+    
+    const realConflicts: ScheduleConflict[] = [];
+    const sameTimeConflicts: ScheduleConflict[] = [];
+    
+    for (const conflict of scheduleResult.conflicts) {
+      if (isSameTimeGroupConflict(conflict)) {
+        sameTimeConflicts.push(conflict);
+      } else {
+        realConflicts.push(conflict);
+      }
+    }
+    
+    return { realConflicts, sameTimeConflicts };
+  });
+
   // Get all unique student groups
   let allStudentGroups = $derived(() => {
     if (!scheduleResult) return [];
@@ -1611,29 +1645,74 @@
           ✅ ไม่พบข้อขัดแย้งในตารางสอบ
         </div>
       {:else}
-        <p class="conflict-info">
-          พบ {scheduleResult.conflicts.length} ข้อขัดแย้ง - กรุณาแก้ไขด้วยตนเอง
-        </p>
-
-        <div class="conflicts-list">
-          {#each scheduleResult.conflicts as conflict}
-            <div class="conflict-card">
-              <div class="conflict-header">
-                <span class="slot">{conflict.slot.date} {conflict.slot.timeDisplay}</span>
-                <span class="type">{conflict.examType === 'midterm' ? 'กลางภาค' : 'ปลายภาค'}</span>
-              </div>
-              <div class="conflict-body">
-                <strong>กลุ่มนักศึกษา: {conflict.studentGroup}</strong>
-                <p>ต้องสอบพร้อมกัน:</p>
-                <ul>
-                  {#each conflict.subjects as subject}
-                    <li>{subject.code} - {subject.name}</li>
-                  {/each}
-                </ul>
-              </div>
-            </div>
-          {/each}
+        {@const { realConflicts, sameTimeConflicts } = categorizedConflicts()}
+        
+        <div class="conflict-summary">
+          {#if realConflicts.length > 0}
+            <span class="summary-error">❌ ข้อขัดแย้งจริง: {realConflicts.length}</span>
+          {/if}
+          {#if sameTimeConflicts.length > 0}
+            <span class="summary-info">ℹ️ วิชาสอบพร้อมกัน (ตามกฎ): {sameTimeConflicts.length}</span>
+          {/if}
         </div>
+
+        {#if realConflicts.length > 0}
+          <div class="conflicts-category">
+            <h3 class="category-title error">❌ ข้อขัดแย้งที่ต้องแก้ไข ({realConflicts.length})</h3>
+            <p class="category-desc">นักศึกษาต้องสอบหลายวิชาพร้อมกัน - กรุณาแก้ไขด้วยตนเอง</p>
+            <div class="conflicts-list">
+              {#each realConflicts as conflict}
+                <div class="conflict-card error">
+                  <div class="conflict-header error">
+                    <span class="slot">{conflict.slot.date} {conflict.slot.timeDisplay}</span>
+                    <span class="type">{conflict.examType === 'midterm' ? 'กลางภาค' : 'ปลายภาค'}</span>
+                  </div>
+                  <div class="conflict-body">
+                    <strong>กลุ่มนักศึกษา: {conflict.studentGroup}</strong>
+                    <p>ต้องสอบพร้อมกัน:</p>
+                    <ul>
+                      {#each conflict.subjects as subject}
+                        <li>{subject.code} - {subject.name}</li>
+                      {/each}
+                    </ul>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+
+        {#if sameTimeConflicts.length > 0}
+          <div class="conflicts-category">
+            <h3 class="category-title info">ℹ️ วิชาที่กำหนดให้สอบพร้อมกัน ({sameTimeConflicts.length})</h3>
+            <p class="category-desc">วิชาเหล่านี้ถูกกำหนดให้สอบพร้อมกันตาม rules.csv - ไม่ต้องแก้ไข</p>
+            <div class="conflicts-list">
+              {#each sameTimeConflicts as conflict}
+                <div class="conflict-card info">
+                  <div class="conflict-header info">
+                    <span class="slot">{conflict.slot.date} {conflict.slot.timeDisplay}</span>
+                    <span class="type">{conflict.examType === 'midterm' ? 'กลางภาค' : 'ปลายภาค'}</span>
+                  </div>
+                  <div class="conflict-body">
+                    <strong>กลุ่มนักศึกษา: {conflict.studentGroup}</strong>
+                    <p>สอบพร้อมกัน (ตามกฎ):</p>
+                    <ul>
+                      {#each conflict.subjects as subject}
+                        <li>{subject.code} - {subject.name}</li>
+                      {/each}
+                    </ul>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+
+        {#if realConflicts.length === 0 && sameTimeConflicts.length > 0}
+          <div class="no-real-conflicts">
+            ✅ ไม่มีข้อขัดแย้งจริง - มีเพียงวิชาที่กำหนดให้สอบพร้อมกันตามกฎเท่านั้น
+          </div>
+        {/if}
       {/if}
     </section>
   {/if}
@@ -1907,11 +1986,63 @@
     font-size: 1.2rem;
   }
 
-  .conflict-info {
-    background: #fff3e0;
+  .no-real-conflicts {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .conflict-summary {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
     padding: 1rem;
+    background: white;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .summary-error {
+    color: #c62828;
+    font-weight: 600;
+  }
+
+  .summary-info {
+    color: #1565C0;
+    font-weight: 600;
+  }
+
+  .conflicts-category {
+    margin-bottom: 2rem;
+  }
+
+  .category-title {
+    margin: 0 0 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+  }
+
+  .category-title.error {
+    background: #ffebee;
+    color: #c62828;
+  }
+
+  .category-title.info {
+    background: #e3f2fd;
+    color: #1565C0;
+  }
+
+  .category-desc {
+    margin: 0 0 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    padding-left: 1rem;
   }
 
   .conflicts-list {
@@ -1927,11 +2058,27 @@
     border-left: 4px solid #ff9800;
   }
 
+  .conflict-card.error {
+    border-left-color: #c62828;
+  }
+
+  .conflict-card.info {
+    border-left-color: #1565C0;
+  }
+
   .conflict-header {
     background: #fff3e0;
     padding: 0.75rem 1rem;
     display: flex;
     justify-content: space-between;
+  }
+
+  .conflict-header.error {
+    background: #ffebee;
+  }
+
+  .conflict-header.info {
+    background: #e3f2fd;
   }
 
   .conflict-header .slot {
@@ -1942,12 +2089,28 @@
     color: #e65100;
   }
 
+  .conflict-header.error .type {
+    color: #c62828;
+  }
+
+  .conflict-header.info .type {
+    color: #1565C0;
+  }
+
   .conflict-body {
     padding: 1rem;
   }
 
   .conflict-body strong {
+    color: #333;
+  }
+
+  .conflict-card.error .conflict-body strong {
     color: #c62828;
+  }
+
+  .conflict-card.info .conflict-body strong {
+    color: #1565C0;
   }
 
   .conflict-body ul {
