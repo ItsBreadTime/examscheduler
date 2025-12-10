@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "deploy": "npm run build && wrangler pages deploy dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
@@ -25,7 +26,8 @@
     "svelte-check": "^4.3.4",
     "typescript": "~5.9.3",
     "vite": "npm:rolldown-vite@7.2.5",
-    "vitest": "^4.0.15"
+    "vitest": "^4.0.15",
+    "wrangler": "^4.53.0"
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
