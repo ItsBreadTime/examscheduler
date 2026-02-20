@@ -22,7 +22,7 @@
     "@types/papaparse": "^5.5.1",
     "jsdom": "^27.2.0",
     "papaparse": "^5.5.3",
-    "svelte": "^5.43.8",
+    "svelte": "^5.53.0",
     "svelte-check": "^4.3.4",
     "typescript": "~5.9.3",
     "vite": "npm:rolldown-vite@7.2.5",
