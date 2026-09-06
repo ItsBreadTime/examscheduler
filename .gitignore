@@ -1,0 +1,27 @@
+node_modules/
+dist/
+web-dist/
+.impeccable
+output/
+.DS_Store
+.wrangler/
+.openchrome
+.zcode/
+
+# Generated document build artifacts
+docs/.build*/
+docs/usage-report/__pycache__/
+docs/usage-report/examples/.run/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+
+# Root-level TeX experiments
+/*-test.pdf
+/*-test.tex
+/t.pdf

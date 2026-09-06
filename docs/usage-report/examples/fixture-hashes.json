@@ -1,0 +1,21 @@
+{
+  "clean/managed.xlsx": "f5eb4aeff78f983b2a152ed21e5719bb6bdf7669ad646748c31293c632d025e7",
+  "clean/context.xlsx": "abf29f1bde259ab0af5561dc06859d7f6d79843496652e14f165ad54c565ca49",
+  "clean/rules.csv": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe",
+  "courses-flat.csv": "ef37bbb4bd44a71912c3a123447408ba2cae2ea0cd36df2615d40c8a9ef309cc",
+  "bad-code/managed.xlsx": "a8335e01b0e89f45979c6cea580f3ad3051647a0283008e714a79725898dab0f",
+  "bad-code/managed.fixed.xlsx": "f5eb4aeff78f983b2a152ed21e5719bb6bdf7669ad646748c31293c632d025e7",
+  "bad-code/context.xlsx": "abf29f1bde259ab0af5561dc06859d7f6d79843496652e14f165ad54c565ca49",
+  "bad-code/rules.csv": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe",
+  "missing-group/managed.xlsx": "0b5ed7a0f80e4b5752729cf59f5bf8820e5ec3e64f35947970b176aaccf568a0",
+  "missing-group/managed.fixed.xlsx": "f5eb4aeff78f983b2a152ed21e5719bb6bdf7669ad646748c31293c632d025e7",
+  "missing-group/context.xlsx": "abf29f1bde259ab0af5561dc06859d7f6d79843496652e14f165ad54c565ca49",
+  "missing-group/rules.csv": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe",
+  "stale-rule/rules.csv": "aebad2638a0e6181c92e7657f759f89be05baba8dc5f524c8c5a4d557503907b",
+  "stale-rule/rules.fixed.csv": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe",
+  "stale-rule/managed.xlsx": "f5eb4aeff78f983b2a152ed21e5719bb6bdf7669ad646748c31293c632d025e7",
+  "stale-rule/context.xlsx": "abf29f1bde259ab0af5561dc06859d7f6d79843496652e14f165ad54c565ca49",
+  "tight-calendar/managed.xlsx": "5267faf61066ef82bbafd0a2a3c6ef2a7b1e8ec396ce1c82a2648350782fc56d",
+  "tight-calendar/context.xlsx": "7700d53cb9cae9e66f57b242cbf4fc92a1365dfe717786d47cd53c3fb580ce48",
+  "tight-calendar/rules.csv": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe"
+}

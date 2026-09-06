@@ -1,0 +1,53 @@
+{
+  "courseSources": [
+    {
+      "path": "managed.xlsx",
+      "role": "managed",
+      "expectedPrefix": "0603"
+    },
+    {
+      "path": "context.xlsx",
+      "role": "context",
+      "expectedPrefix": "0402"
+    }
+  ],
+  "rules": "rules.csv",
+  "references": [
+    {
+      "path": "roominfo.csv",
+      "kind": "rooms"
+    }
+  ],
+  "settings": {
+    "periods": {
+      "midterm": {
+        "start": "2026-08-17",
+        "end": "2026-08-28"
+      },
+      "final": {
+        "start": "2026-10-14",
+        "end": "2026-10-30"
+      }
+    },
+    "sessions": [
+      {
+        "startMinutes": 540,
+        "endMinutes": 720
+      },
+      {
+        "startMinutes": 780,
+        "endMinutes": 960
+      }
+    ],
+    "fullDay": {
+      "startMinutes": 540,
+      "endMinutes": 960
+    },
+    "weekendPolicy": "only_if_necessary",
+    "holidays": [
+      "2026-08-20"
+    ],
+    "holidayPolicy": "only_if_necessary",
+    "searchBudget": 20000
+  }
+}

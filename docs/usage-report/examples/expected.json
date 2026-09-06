@@ -1,0 +1,66 @@
+{
+  "fixture": "docs/usage-report/examples (synthetic, invented data)",
+  "settings": {
+    "midterm": { "start": "2026-08-17", "end": "2026-08-28" },
+    "final": { "start": "2026-10-14", "end": "2026-10-30" },
+    "sessions": ["09:00-12:00", "13:00-16:00"],
+    "fullDay": "09:00-16:00",
+    "weekendPolicy": "only_if_necessary",
+    "holidayPolicy": "only_if_necessary",
+    "holidays": ["2026-08-24", "2026-10-21"],
+    "searchBudget": 20000
+  },
+  "sources": [
+    { "file": "managed.xlsx", "role": "managed", "courses": 12, "sections": 16 },
+    { "file": "context.xlsx", "role": "context", "courses": 2, "sections": 2 },
+    { "file": "rules.csv", "kind": "rules" }
+  ],
+  "expectedImport": { "status": "valid", "blockingIssues": 0 },
+  "expectedSchedule": {
+    "scheduledManagedEvents": 22,
+    "unscheduled": 0,
+    "overallStatus": "valid",
+    "issues": [],
+    "daysUsed": { "midterm": 6, "final": 6 },
+    "weekendExams": 0,
+    "holidayExams": 0,
+    "peakConcurrentExams": 2,
+    "scheduleHash": "faba020eaa64d48bf6b6731dd35f415f0e9eb685f6f2c4b914d9de40e1f03a23"
+  },
+  "anchors": {
+    "061000001": { "midterm": ["2026-08-19", "09:00", "12:00"], "final": ["2026-10-14", "09:00", "12:00"], "role": "managed", "groups": ["DEMO-A"] },
+    "061000002": { "midterm": ["2026-08-21", "09:00", "12:00"], "final": ["2026-10-16", "09:00", "12:00"], "role": "managed", "groups": ["DEMO-A"] },
+    "061000003": { "midterm": ["2026-08-17", "09:00", "12:00"], "final": ["2026-10-14", "13:00", "16:00"], "role": "managed", "groups": ["DEMO-C"] },
+    "061000004": { "midterm": ["2026-08-17", "09:00", "12:00"], "final": ["2026-10-14", "13:00", "16:00"], "role": "managed", "groups": ["DEMO-D"], "sameTimeWith": ["061000003"] },
+    "061000005": { "midterm": ["2026-08-20", "09:00", "16:00"], "final": ["2026-10-15", "09:00", "16:00"], "role": "managed", "groups": ["DEMO-E"], "fullDay": true },
+    "061000006": { "midterm": ["2026-08-18", "09:00", "12:00"], "final": ["2026-10-19", "09:00", "12:00"], "role": "managed", "groups": ["DEMO-F"], "midtermFixedImported": true },
+    "061000007": { "midterm": ["2026-08-17", "13:00", "16:00"], "final": ["2026-10-16", "13:00", "16:00"], "role": "managed", "groups": ["DEMO-GA", "DEMO-GB", "DEMO-GC"], "sections": 3 },
+    "061000008": { "midterm": null, "final": ["2026-10-19", "13:00", "16:00"], "role": "managed", "groups": ["DEMO-H"], "midtermExcluded": true },
+    "061000009": { "midterm": ["2026-08-18", "13:00", "16:00"], "final": null, "role": "managed", "groups": ["DEMO-I"], "finalExcluded": true },
+    "069000001": { "midterm": null, "final": ["2026-10-15", "09:00", "12:00"], "role": "context", "groups": ["DEMO-F"] },
+    "069000002": { "midterm": ["2026-08-17", "13:00", "16:00"], "final": null, "role": "context", "groups": ["DEMO-A"] }
+  },
+  "manualEditTargets": {
+    "E01": { "code": "061000001", "examType": "midterm", "from": ["2026-08-19", "09:00", "12:00"], "to": ["2026-08-20", "13:00", "16:00"], "accepted": true, "affected": 1 },
+    "E03": { "code": "061000003", "examType": "midterm", "to": ["2026-08-21", "13:00", "16:00"], "accepted": true, "affected": 2, "members": ["061000003", "061000004"] },
+    "E04": { "code": "061000005", "examType": "midterm", "partial": ["2026-08-21", "09:00", "12:00"], "partialAccepted": false, "full": ["2026-08-21", "09:00", "16:00"], "fullAccepted": true },
+    "E10": { "code": "061000007", "examType": "midterm", "custom": ["2026-08-20", "10:30", "13:30"], "accepted": true },
+    "E11": { "code": "061000001", "examType": "midterm", "outOfPeriod": ["2026-09-02", "09:00", "12:00"], "reversed": ["2026-08-21", "13:00", "09:00"] }
+  },
+  "variants": {
+    "bad-code": { "issue": "MALFORMED_COURSE_ROW", "expectedImportedManagedCourses": 11, "fixed": "managed.fixed.xlsx" },
+    "missing-group": { "issue": "MISSING_STUDENT_GROUPS", "blockedCourse": "061000011", "fixed": "managed.fixed.xlsx" },
+    "stale-rule": { "issue": "STALE_RULE_REFERENCE", "badCode": "060999999", "fixed": "rules.fixed.csv" },
+    "tight-calendar": { "courses": 13, "unscheduledOnTightPeriod": ["061000021"], "recovery": "widen period to include 2026-08-29 or allow weekends" }
+  },
+  "checkpoints": {
+    "P0": "empty test session",
+    "P1": "configured draft",
+    "P2": "reviewed import",
+    "P3": "generated baseline",
+    "P4": "manual edit saved",
+    "P5": "regenerated result",
+    "P6": "fresh re-import result",
+    "P7": "cloud revision saved"
+  }
+}

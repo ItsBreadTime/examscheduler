@@ -1,0 +1,105 @@
+{
+  "recordedAt": "2026-09-06T04:18:45.287Z",
+  "command": "node docs/data/verify-results.ts",
+  "identifierPolicy": "Occurrences are qualified by their source field namespace; identical strings can name different API concepts.",
+  "observedIdentifiers": [
+    "exitStatuses:0",
+    "exitStatuses:2",
+    "issueCodes:DUPLICATE_ROOM",
+    "issueCodes:DUPLICATE_RULE",
+    "issueCodes:EXAM_ON_HOLIDAY",
+    "issueCodes:EXAM_ON_WEEKEND",
+    "issueCodes:INVALID_EXAM_TIMING",
+    "issueCodes:MALFORMED_COURSE_ROW",
+    "issueCodes:MISSING_STUDENT_GROUPS",
+    "issueCodes:PROCTOR_DEMAND_UNKNOWN",
+    "issueCodes:ROOM_REQUIREMENT_UNSATISFIED",
+    "issueCodes:SAME_TIME_CONTRADICTION",
+    "issueCodes:SOURCE_DATA_INVALID",
+    "issueCodes:STALE_RULE_REFERENCE",
+    "issueCodes:UNSCHEDULED_REQUIRED_EXAM",
+    "searchStatisticFields:avoidedDaysOptimal",
+    "searchStatisticFields:avoidedEventLowerBound",
+    "searchStatisticFields:budget",
+    "searchStatisticFields:budgetExhausted",
+    "searchStatisticFields:components",
+    "searchStatisticFields:coverageOptimal",
+    "searchStatisticFields:coverageUpperBound",
+    "searchStatisticFields:exchangeMoves",
+    "searchStatisticFields:feasibilityBudget",
+    "searchStatisticFields:improvementBudgetExhausted",
+    "searchStatisticFields:improvementEvaluations",
+    "searchStatisticFields:improvementMoves",
+    "searchStatisticFields:maxPlaceableKnown",
+    "searchStatisticFields:policyDeclinedEvents",
+    "searchStatisticFields:provablyImpossibleEvents",
+    "searchStatisticFields:visitedNodes",
+    "solverUnscheduledReasons:SAME_TIME_CONTRADICTION"
+  ],
+  "outcomes": [
+    {
+      "scenario": "clean",
+      "pass": true,
+      "exitCode": 0,
+      "phase": "audit",
+      "anchors": [
+        "sameTimePair",
+        "sharedGroupPairNeverOverlaps",
+        "fullDayCourseInterval",
+        "avoidedDaysOnlyForSaturatedCohorts",
+        "importedTimingPreserved"
+      ]
+    },
+    {
+      "scenario": "errors-stale-rule",
+      "pass": true,
+      "exitCode": 0,
+      "phase": "audit",
+      "anchors": []
+    },
+    {
+      "scenario": "errors-same-time-contradiction",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "audit",
+      "anchors": [
+        "unscheduledCodesAreEventsWithoutTiming"
+      ]
+    },
+    {
+      "scenario": "errors-combined",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "audit",
+      "anchors": []
+    },
+    {
+      "scenario": "import-failure-malformed-course-code",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "import",
+      "anchors": []
+    },
+    {
+      "scenario": "import-failure-missing-student-groups",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "import",
+      "anchors": []
+    },
+    {
+      "scenario": "import-failure-invalid-exam-timing",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "import",
+      "anchors": []
+    },
+    {
+      "scenario": "import-failure-duplicate-room",
+      "pass": true,
+      "exitCode": 2,
+      "phase": "import",
+      "anchors": []
+    }
+  ]
+}

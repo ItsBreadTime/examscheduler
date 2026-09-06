@@ -1,0 +1,5 @@
+courseCode,courseName,sectionNumber,studentGroups,midtermDate,midtermTime,finalDate,finalTime,plannedEnrollment,registeredEnrollment,instructors,teachingDay,teachingTime,teachingRoom
+061000101,การวิเคราะห์เชิงตัวเลข,1,"DEMO-M1;DEMO-M2",17/08/69,09.00-12.00,,,90,88,"""อ.สมัครเรียน""",จันทร์,09:00-12:00,LAB-101
+061000102,การเขียนโปรแกรมคอมพิวเตอร์,1,DEMO-M2,2026-08-18,13:00-16:00,15/10/69,13.00-16.00,75,72,"""อ.ขวัญใจ""",อังคาร,13:00-15:00,LAB-102
+061000103,การออกแบบผลิตภัณฑ์,1,"DEMO-M3
+DEMO-M4",,,,,60,58,"""อ.สุชาติ""",พุธ,09:00-12:00,STU-8

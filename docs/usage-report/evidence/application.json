@@ -1,0 +1,71 @@
+{
+  "document": "คู่มือการใช้งานระบบจัดตารางสอบ Exam Scheduler",
+  "documentVersion": "1.0",
+  "date": "2026-09-06",
+  "application": {
+    "name": "Exam Scheduler",
+    "packageVersion": "0.1.0",
+    "gitRevision": "cb404dafed76e632e0e794f8dbd2814999f4252e",
+    "repository": "https://github.com/ItsBreadTime/examscheduler"
+  },
+  "uiFlags": {
+    "SHOW_PROCTORS": false,
+    "SHOW_ROOMS": false,
+    "SHOW_RESOURCES": false,
+    "note": "โพรซีเดอร์ที่เกี่ยวกับห้องสอบและผู้คุมสอบไม่ถูกนำมาสอนในคู่มือ เนื่องจากอินเทอร์เฟซถูกซ่อนไว้ ทรัพยากรอาจปรากฏในไฟล์ส่งออกเท่านั้น"
+  },
+  "parserVersions": {
+    "parser": "0.3.0",
+    "scheduler": "0.5.0",
+    "validator": "0.4.0",
+    "projectSchema": 1,
+    "auditSchema": 4
+  },
+  "productionUrl": "https://schedule.breadtm.xyz/",
+  "build": {
+    "tool": "latexmk (LuaLaTeX)",
+    "lualatex": "LuaHBTeX 1.24.0 (TeX Live 2026)",
+    "pages": 66,
+    "fonts": ["Sarabun-Regular", "Sarabun-Bold"],
+    "missingGlyphs": 0,
+    "overfullBoxes": 0,
+    "undefinedReferences": 0
+  },
+  "sources": [
+    {
+      "file": "managed.xlsx",
+      "role": "managed",
+      "courses": 12,
+      "sections": 16,
+      "sha256": "f5eb4aeff78f983b2a152ed21e5719bb6bdf7669ad646748c31293c632d025e7"
+    },
+    {
+      "file": "context.xlsx",
+      "role": "context",
+      "courses": 2,
+      "sections": 2,
+      "sha256": "abf29f1bde259ab0af5561dc06859d7f6d79843496652e14f165ad54c565ca49"
+    },
+    {
+      "file": "rules.csv",
+      "kind": "rules",
+      "sha256": "ac7aec94b076623f57a2b9d73e0eeb709620e6e517fc2a106980ca5cf2a145fe"
+    }
+  ],
+  "settings": {
+    "midterm": { "start": "2026-08-17", "end": "2026-08-28" },
+    "final": { "start": "2026-10-14", "end": "2026-10-30" },
+    "sessions": ["09:00-12:00", "13:00-16:00"],
+    "fullDay": "09:00-16:00",
+    "weekendPolicy": "only_if_necessary",
+    "holidayPolicy": "only_if_necessary",
+    "holidays": ["2026-08-24", "2026-10-21"],
+    "searchBudget": 20000
+  },
+  "expectedSchedule": {
+    "scheduledManagedEvents": 22,
+    "unscheduled": 0,
+    "overallStatus": "valid",
+    "scheduleHash": "faba020eaa64d48bf6b6731dd35f415f0e9eb685f6f2c4b914d9de40e1f03a23"
+  }
+}

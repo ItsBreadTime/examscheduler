@@ -1,0 +1,148 @@
+{
+  "recordedAt": "2026-09-06T15:05:26.410Z",
+  "baseUrl": "https://schedule.breadtm.xyz/",
+  "command": "node docs/data/cloud-verification.ts",
+  "environment": {
+    "openApiVersion": "1.1.0",
+    "deployedAssets": {
+      "js": "/assets/index-D1MResGu.js",
+      "css": "/assets/index-Da22cc1D.css"
+    },
+    "localAssets": {
+      "js": "/assets/index-D1MResGu.js",
+      "css": "/assets/index-Da22cc1D.css"
+    },
+    "matchesLocalBuild": true,
+    "cspMetaMatchesLocalBuild": true,
+    "snapshotSource": "docs/data/results-clean.json",
+    "snapshotCanonicalSha256": "f02b2ec8e98c0c245c43164d32967b5330b44ddb77682cdc3cc52ce0097fe1d7"
+  },
+  "checks": [
+    {
+      "id": "spa-parity",
+      "check": "served SPA asset refs and CSP meta are identical to the current revision build",
+      "expected": "served HTML asset refs and CSP meta equal to local web-dist build (index-D1MResGu.js, index-Da22cc1D.css)",
+      "observed": "status 200, js index-D1MResGu.js, css index-Da22cc1D.css, CSP present, byte-identical to local build",
+      "pass": true
+    },
+    {
+      "id": "openapi",
+      "check": "the deployed worker publishes its OpenAPI document and API version",
+      "expected": "200, openapi 3.1.0 document, info.version 1.1.0",
+      "observed": "200, openapi 3.1.0, version 1.1.0",
+      "pass": true
+    },
+    {
+      "id": "security-headers",
+      "check": "API responses carry the anti-sniffing and referrer headers",
+      "expected": "x-content-type-options: nosniff and referrer-policy: no-referrer",
+      "observed": "x-content-type-options: nosniff, referrer-policy: no-referrer",
+      "pass": true
+    },
+    {
+      "id": "validate-evidence-hash",
+      "check": "the deployed validator reports the schedule hash recorded in the clean-set evidence",
+      "expected": "200, scheduleHash sha256:e97fb2148a229b (docs/data/results-clean.json audit.scheduleHash)",
+      "observed": "200, scheduleHash sha256:e97fb2148a229b841cfc067a896e45c6791b8f732c5ba39589194f47926a6184, status valid_with_warnings",
+      "pass": true
+    },
+    {
+      "id": "create-project",
+      "check": "project creation stores the canonical snapshot and returns the owner capability",
+      "expected": "201, snapshotHash sha256:f02b2ec8e98c, ownerShareId + ownerSecret returned",
+      "observed": "201, snapshotHash sha256:f02b2ec8e98c0c, ownerShareId shr_88e423716497 (secret b340fe06)",
+      "pass": true
+    },
+    {
+      "id": "revision-save",
+      "check": "saving a new revision with the owner capability succeeds",
+      "expected": "200, new revisionId distinct from the base",
+      "observed": "200, revisionId rev_f126bb4271b1",
+      "pass": true
+    },
+    {
+      "id": "revision-conflict",
+      "check": "saving against a stale base revision is rejected (optimistic concurrency)",
+      "expected": "409 REVISION_CONFLICT with currentRevisionId",
+      "observed": "409 REVISION_CONFLICT, currentRevisionId matches latest",
+      "pass": true
+    },
+    {
+      "id": "share-schedule-scope",
+      "check": "schedule-scope share strips roster, proctors, sources and import issues, and hides projectId",
+      "expected": "projectId null, proctors [], importIssues [], no artifacts key, proctorAssignments cleared, minimal sections",
+      "observed": "projectId null, proctors 0, importIssues 0, artifacts absent, proctorAssignments cleared true, sections minimal true",
+      "pass": true
+    },
+    {
+      "id": "share-audit-scope",
+      "check": "audit-scope share preserves artifacts and provenance, and reaches the audit bundle",
+      "expected": "projectId null, artifacts preserved, sourceRef reduced to artifactId, audit endpoint 200",
+      "observed": "projectId null, artifacts 4/4, sourceRef artifactId-only true, audit detail 200",
+      "pass": true
+    },
+    {
+      "id": "share-full-scope",
+      "check": "full_project share returns the complete project and reveals its own projectId",
+      "expected": "projectId proj_94c26e7eba87, snapshot canonically identical (stored at sha256 f02b2ec8e98c)",
+      "observed": "projectId proj_94c26e7eba87, canonical match true",
+      "pass": true
+    },
+    {
+      "id": "scoped-boundaries",
+      "check": "a read-only share holder cannot mint shares, read audits or download sources",
+      "expected": "mint 403 FORBIDDEN, audit 403, sources 403",
+      "observed": "mint 403 FORBIDDEN, audit 403 FORBIDDEN, sources 403 FORBIDDEN",
+      "pass": true
+    },
+    {
+      "id": "source-roundtrip",
+      "check": "an uploaded source artifact round-trips byte-identically through the full_project share",
+      "expected": "200, bytes identical to the uploaded artifact (sha256 ad9dc634cc2b)",
+      "observed": "200, 45 bytes, bytes identical",
+      "pass": true
+    },
+    {
+      "id": "share-revocation",
+      "check": "a revoked share is refused immediately while sibling shares keep working",
+      "expected": "DELETE 200, revoked share then 401 UNAUTHORIZED, sibling share still 200",
+      "observed": "DELETE 200 true, revoked share 401 UNAUTHORIZED, sibling 200",
+      "pass": true
+    },
+    {
+      "id": "auth-indistinguishable",
+      "check": "unauthorized reads of unknown vs known ids, and writes to unknown vs known projects, return identical bodies",
+      "expected": "identical 401 body for unknown id and wrong secret; identical 403 body for unknown and known project",
+      "observed": "401 bodies equal true (401/401), 403 bodies equal true (403/403)",
+      "pass": true
+    },
+    {
+      "id": "input-caps",
+      "check": "over-limit inputs are contained: more than 20 sources rejected, names longer than 200 characters truncated",
+      "expected": "21 sources 413 PAYLOAD_TOO_LARGE, 250-char name stored at exactly 200 characters",
+      "observed": "21 sources 413 PAYLOAD_TOO_LARGE, 250-char name stored at 200 chars",
+      "pass": true
+    },
+    {
+      "id": "rate-limit",
+      "check": "the deployed write surface answers 429 once the per-minute mutation limit is exceeded",
+      "expected": "sustained 429s within the bounded probe window (limit 120 mutations per minute per client; Cloudflare documents the binding as permissive and eventually consistent, so short bursts overshoot)",
+      "observed": "first 429 at attempt 227 of 259 in 19.5s, 32 rejections, statuses {\"201\":227,\"429\":32}",
+      "pass": true
+    }
+  ],
+  "rateLimitProbe": {
+    "attempts": 259,
+    "first429Attempt": 227,
+    "statusCounts": {
+      "201": 227,
+      "429": 32
+    },
+    "elapsedSeconds": 19.5
+  },
+  "notes": [
+    "Project and probe rows created by this run (cloud-validation-*, cloud-validation-caps, the 250-character name row, ratelimit-probe-*) persist in the deployed D1/R2 storage: the API (v1.1.0) has no delete-project endpoint. All payloads are synthetic fixtures from docs/data.",
+    "Share and owner secrets are never persisted by this tool; identities above are reduced to 8-hex sha256 prefixes.",
+    "docs/checksums.sha256 captures this file after the final report build."
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "pinnedFrom": "Observed behavior of the 2026-09-05 functional matrix run (docs/data/run-records.json), not design intent: every assertion below was first observed on a real CLI run and then frozen (report plan 1.4).",
+  "identifierClasses": {
+    "issueCodes": [
+      "PROCTOR_DEMAND_UNKNOWN",
+      "EXAM_ON_WEEKEND",
+      "EXAM_ON_HOLIDAY",
+      "STALE_RULE_REFERENCE",
+      "DUPLICATE_RULE",
+      "SAME_TIME_CONTRADICTION",
+      "UNSCHEDULED_REQUIRED_EXAM",
+      "MALFORMED_COURSE_ROW",
+      "MISSING_STUDENT_GROUPS",
+      "INVALID_EXAM_TIMING",
+      "SOURCE_DATA_INVALID",
+      "DUPLICATE_ROOM",
+      "ROOM_REQUIREMENT_UNSATISFIED"
+    ],
+    "solverUnscheduledReasons": [
+      "SAME_TIME_CONTRADICTION"
+    ],
+    "searchStatisticFields": [
+      "visitedNodes",
+      "budget",
+      "feasibilityBudget",
+      "budgetExhausted",
+      "improvementMoves",
+      "improvementEvaluations",
+      "exchangeMoves",
+      "components",
+      "coverageUpperBound",
+      "coverageOptimal",
+      "avoidedEventLowerBound",
+      "avoidedDaysOptimal",
+      "improvementBudgetExhausted",
+      "provablyImpossibleEvents",
+      "policyDeclinedEvents",
+      "maxPlaceableKnown"
+    ],
+    "exitStatuses": [
+      0,
+      2
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "clean",
+      "dir": "clean",
+      "mode": "full",
+      "expect": {
+        "exitCode": 0,
+        "issues": {
+          "PROCTOR_DEMAND_UNKNOWN": 82,
+          "EXAM_ON_WEEKEND": 3,
+          "EXAM_ON_HOLIDAY": 1
+        },
+        "status": "valid_with_warnings",
+        "scheduledManagedEvents": 82,
+        "unscheduledEvents": 0,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        },
+        "roomsAssigned": 82,
+        "roomsUnassigned": 0,
+        "search": {
+          "coverageOptimal": true,
+          "coverageUpperBound": 78,
+          "budgetExhausted": false,
+          "provablyImpossibleEvents": 0,
+          "policyDeclinedEvents": 0,
+          "maxPlaceableKnown": 78
+        }
+      },
+      "anchors": [
+        {
+          "kind": "sameTimePair",
+          "codes": [
+            "060321113",
+            "060321120"
+          ]
+        },
+        {
+          "kind": "sharedGroupPairNeverOverlaps",
+          "codes": [
+            "060321127",
+            "060321134"
+          ]
+        },
+        {
+          "kind": "fullDayCourseInterval",
+          "code": "060321106",
+          "startMinutes": 540,
+          "endMinutes": 960
+        },
+        {
+          "kind": "avoidedDaysOnlyForSaturatedCohorts",
+          "cohorts": [
+            "IAM-2R-DE-RA",
+            "ITS-2R-DE-RA",
+            "CNS-2R-DE-RA",
+            "LOG-2R-DE-RA"
+          ],
+          "avoidedDates": [
+            "2026-08-20",
+            "2026-08-22",
+            "2026-08-23"
+          ]
+        },
+        {
+          "kind": "importedTimingPreserved",
+          "codes": [
+            "060321190",
+            "060321197"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "errors-stale-rule",
+      "dir": "errors/stale-rule",
+      "mode": "full",
+      "expect": {
+        "exitCode": 0,
+        "issues": {
+          "PROCTOR_DEMAND_UNKNOWN": 82,
+          "EXAM_ON_WEEKEND": 3,
+          "EXAM_ON_HOLIDAY": 1,
+          "STALE_RULE_REFERENCE": 1
+        },
+        "status": "valid_with_warnings",
+        "scheduledManagedEvents": 82,
+        "unscheduledEvents": 0,
+        "weekendExams": 3,
+        "holidayExams": 1
+      },
+      "anchors": []
+    },
+    {
+      "id": "errors-same-time-contradiction",
+      "dir": "errors/same-time-contradiction",
+      "mode": "full",
+      "expect": {
+        "exitCode": 2,
+        "issues": {
+          "PROCTOR_DEMAND_UNKNOWN": 78,
+          "UNSCHEDULED_REQUIRED_EXAM": 4,
+          "EXAM_ON_WEEKEND": 3,
+          "SAME_TIME_CONTRADICTION": 2,
+          "EXAM_ON_HOLIDAY": 1
+        },
+        "status": "invalid",
+        "scheduledManagedEvents": 78,
+        "unscheduledEvents": 4,
+        "unscheduledByReason": {
+          "SAME_TIME_CONTRADICTION": 2
+        },
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "search": {
+          "coverageOptimal": true,
+          "coverageUpperBound": 74,
+          "provablyImpossibleEvents": 4,
+          "policyDeclinedEvents": 0,
+          "maxPlaceableKnown": 74
+        }
+      },
+      "anchors": [
+        {
+          "kind": "unscheduledCodesAreEventsWithoutTiming",
+          "codes": [
+            "060321113",
+            "060321120"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "errors-combined",
+      "dir": "errors/combined",
+      "mode": "full",
+      "expect": {
+        "exitCode": 2,
+        "issues": {
+          "PROCTOR_DEMAND_UNKNOWN": 78,
+          "UNSCHEDULED_REQUIRED_EXAM": 4,
+          "EXAM_ON_WEEKEND": 3,
+          "SAME_TIME_CONTRADICTION": 2,
+          "EXAM_ON_HOLIDAY": 1,
+          "STALE_RULE_REFERENCE": 1,
+          "DUPLICATE_RULE": 1
+        },
+        "status": "invalid",
+        "scheduledManagedEvents": 78,
+        "unscheduledEvents": 4,
+        "unscheduledByReason": {
+          "SAME_TIME_CONTRADICTION": 2
+        },
+        "search": {
+          "provablyImpossibleEvents": 4,
+          "policyDeclinedEvents": 0
+        }
+      },
+      "anchors": []
+    },
+    {
+      "id": "import-failure-malformed-course-code",
+      "dir": "import-failures/malformed-course-code",
+      "mode": "inspect",
+      "expect": {
+        "exitCode": 2,
+        "blockingIssues": [
+          "MALFORMED_COURSE_ROW"
+        ],
+        "warningIssues": {
+          "PROCTOR_DEMAND_UNKNOWN": 4,
+          "ROOM_REQUIREMENT_UNSATISFIED": 4
+        },
+        "managedCourseCount": 40,
+        "managedSectionCount": 46
+      },
+      "anchors": []
+    },
+    {
+      "id": "import-failure-missing-student-groups",
+      "dir": "import-failures/missing-student-groups",
+      "mode": "inspect",
+      "expect": {
+        "exitCode": 2,
+        "blockingIssues": [
+          "MISSING_STUDENT_GROUPS",
+          "SOURCE_DATA_INVALID",
+          "SOURCE_DATA_INVALID"
+        ],
+        "warningIssues": {
+          "PROCTOR_DEMAND_UNKNOWN": 4,
+          "ROOM_REQUIREMENT_UNSATISFIED": 4
+        },
+        "managedCourseCount": 41,
+        "managedSectionCount": 47
+      },
+      "anchors": []
+    },
+    {
+      "id": "import-failure-invalid-exam-timing",
+      "dir": "import-failures/invalid-exam-timing",
+      "mode": "inspect",
+      "expect": {
+        "exitCode": 2,
+        "blockingIssues": [
+          "INVALID_EXAM_TIMING",
+          "SOURCE_DATA_INVALID"
+        ],
+        "warningIssues": {
+          "PROCTOR_DEMAND_UNKNOWN": 4,
+          "ROOM_REQUIREMENT_UNSATISFIED": 4
+        },
+        "managedCourseCount": 41,
+        "managedSectionCount": 47
+      },
+      "anchors": []
+    },
+    {
+      "id": "import-failure-duplicate-room",
+      "dir": "import-failures/duplicate-room",
+      "mode": "inspect",
+      "expect": {
+        "exitCode": 2,
+        "blockingIssues": [
+          "DUPLICATE_ROOM"
+        ],
+        "warningIssues": {
+          "PROCTOR_DEMAND_UNKNOWN": 4,
+          "ROOM_REQUIREMENT_UNSATISFIED": 4
+        },
+        "managedCourseCount": 41,
+        "managedSectionCount": 47
+      },
+      "anchors": []
+    }
+  ],
+  "identifierClassification": "Classify source-field-qualified occurrences, not bare spellings: SAME_TIME_CONTRADICTION is both a validation issue type and a solver reason in current source."
+}

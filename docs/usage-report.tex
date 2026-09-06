@@ -1,0 +1,90 @@
+% ============================================================================
+% คู่มือการใช้งานระบบจัดตารางสอบ Exam Scheduler
+% ผู้เขียนหลัก: Exam Scheduler project (คู่มือฉบับใช้งาน)
+% วันที่จัดทำ: 6 กันยายน พ.ศ. 2569 (ค.ศ. 2026)
+% ----------------------------------------------------------------------------
+% เอกสารนี้สอนการใช้งานระบบสำหรับบุคลากรจัดตารางสอบ โดยใช้ข้อมูลสังเคราะห์
+% (synthetic) ที่สร้างขึ้นเพื่อการสาธิตโดยเฉพาะ ไม่ใช่ข้อมูลของมหาวิทยาลัยจริง
+% และไม่ใช่ตารางสอบ/ปฏิทินวันหยุดอย่างเป็นทางการของสถาบันใด
+% ----------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[main=thai,provide=*]{babel}
+\babelprovide[main]{thai}
+\input{docs/usage-report/style.tex}
+
+\begin{document}
+
+% ============================ หน้าปก ========================================
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+\begin{tabular}{@{}c@{\hspace{1.2cm}}c@{}}
+\includegraphics[height=2.2cm,keepaspectratio]{docs/usage-report/branding/fitm-logo.png} &
+\includegraphics[height=2.2cm,keepaspectratio]{docs/usage-report/branding/kmutnb-logo.png}
+\end{tabular}\par
+\vspace{0.5cm}
+{\large คณะเทคโนโลยีอุตสาหกรรมและการจัดการ\par
+มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ\par}
+\vspace{0.9cm}
+{\Huge คู่มือการใช้งาน\par}
+\vspace{0.7cm}
+{\Huge\bfseries ระบบจัดตารางสอบ Exam Scheduler\par}
+\vspace{1cm}
+{\Large การเตรียมข้อมูล การนำเข้า การจัดตารางสอบ\par การแก้ไขเวลาด้วยตนเอง การบันทึก และการแชร์\par}
+\vspace{1.2cm}
+{\large 6 กันยายน พ.ศ. 2569\par}
+\vfill
+{\small ฉบับ 1.0\par}
+\end{titlepage}
+
+% ============================ บทคัดย่อ/ขอบเขต ===============================
+\section*{ขอบเขตและวิธีใช้คู่มือนี้}
+คู่มือนี้เขียนขึ้นสำหรับบุคลากรที่ต้องจัดตารางสอบและมีทักษะพื้นฐานในการใช้
+ตารางคำนวณ (เช่น ไฟล์ \file{.xlsx} หรือ \file{.csv}) โดยไม่จำเป็นต้องมีความรู้
+ด้านการเขียนโปรแกรม ผู้อ่านจะได้เรียนรู้ตั้งแต่การเตรียมไฟล์ข้อมูล การตั้งค่าโครงการ
+การนำเข้า การจัดตารางสอบ การอ่านผลลัพธ์ การแก้ไขเวลาสอบด้วยตนเอง การตรวจสอบและ
+แก้ปัญหาที่พบบ่อย ตลอดจนการเก็บงานและการแชร์ผลงาน
+
+\subsection*{ข้อมูลที่ใช้ในตัวอย่าง}
+ตัวอย่างในคู่มือนี้ใช้ข้อมูลสังเคราะห์ทั้งหมด ได้แก่ไฟล์รายวิชา \file{managed.xlsx}
+(จัดอัตโนมัติ 12 รายวิชา) ไฟล์ \file{context.xlsx} (จัดไปแล้ว 2 รายวิชา)
+และไฟล์เงื่อนไข \file{rules.csv} โดยทุกชื่อวิชา กลุ่มนักศึกษา และชื่ออาจารย์
+เป็นข้อมูลสมมติที่สร้างขึ้นเพื่อการสาธิต ไม่ใช่ตารางสอบจริง
+
+\subsection*{เส้นทางใช้งานฉบับย่อ}
+\begin{center}
+\begin{tabular}{L{1.1cm}L{4.2cm}L{8.6cm}}
+\toprule
+\textbf{ลำดับ} & \textbf{งาน} & \textbf{ไปที่} \\
+\midrule
+1 & เตรียมข้อมูล & บทที่ 2: รูปแบบไฟล์ บทบาท และเงื่อนไข \\
+2 & ตั้งค่าและนำเข้า & บทที่ 3: ไฟล์ ปฏิทิน และการตรวจสอบก่อนนำเข้า \\
+3 & จัดและอ่านผล & บทที่ 4: ภาพรวม รายวิชา ปฏิทิน และกลุ่มนักศึกษา \\
+4 & ปรับเวลาด้วยตนเอง & บทที่ 5: ดูตัวอย่าง บันทึก และตรวจผลกระทบ \\
+5 & ตรวจคุณภาพ & บทที่ 6: ปัญหา แหล่งที่มา และรายงานตรวจสอบ \\
+6 & เก็บหรือส่งต่องาน & บทที่ 7--8: ไฟล์เก็บถาวร การเปิดงานต่อ และการแชร์ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+\tableofcontents
+\clearpage
+
+% ============================ บทที่ 1-9 และภาคผนวก ==========================
+\input{docs/usage-report/chapters/ch01-start}
+\input{docs/usage-report/chapters/ch02-prepare}
+\input{docs/usage-report/chapters/ch03-import}
+\input{docs/usage-report/chapters/ch04-read}
+\input{docs/usage-report/chapters/ch05-edit}
+\input{docs/usage-report/chapters/ch06-check}
+\input{docs/usage-report/chapters/ch07-export}
+\input{docs/usage-report/chapters/ch08-cloud}
+\input{docs/usage-report/chapters/ch09-troubleshoot}
+\input{docs/usage-report/chapters/appendix-a-fields}
+\input{docs/usage-report/chapters/appendix-b-samples}
+\input{docs/usage-report/chapters/appendix-c-glossary}
+\input{docs/usage-report/chapters/appendix-d-quickref}
+
+\end{document}

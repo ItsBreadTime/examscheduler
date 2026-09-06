@@ -1,0 +1,206 @@
+% ============================================================================
+% คู่มือการใช้งานระบบจัดตารางสอบ Exam Scheduler — สไตล์และคำสั่งเฉพาะ
+% ใช้ร่วมกับ LuaLaTeX + babel (ไทย) + Sarabun/CommitMono จาก docs/fonts/
+% ============================================================================
+
+% --- เรขาคณิตของหน้ากระดาษ (A4 แนวตั้ง) --------------------------------------
+\usepackage[left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% --- ฟอนต์ไทยและฟอนต์รหัส/ชื่อไฟล์ ------------------------------------------
+% ใช้ Sarabun เป็นฟอนต์เนื้อหา และ CommitMono สำหรับรหัส/ชื่อไฟล์/ตัวเลขเก้าหลัก
+\babelfont{rm}[Path=docs/fonts/,Extension=.ttf,UprightFont=Sarabun-Regular,BoldFont=Sarabun-Bold,ItalicFont=Sarabun-Italic,BoldItalicFont=Sarabun-BoldItalic,Scale=1.06,Renderer=HarfBuzz]{Sarabun}
+\babelfont{tt}[Path=docs/fonts/,Extension=.otf,UprightFont=CommitMono-400-Regular,BoldFont=CommitMono-700-Regular,ItalicFont=CommitMono-400-Italic,BoldItalicFont=CommitMono-700-Italic,Scale=MatchLowercase,Ligatures={TeXOff,NoContextual,NoDiscretionary},Renderer=HarfBuzz]{CommitMono}
+\linespread{1.30}
+
+% --- แพ็กเกจที่ใช้ -----------------------------------------------------------
+\usepackage{booktabs,longtable,array,graphicx,tikz,xcolor}
+\usepackage{float}
+\usepackage{needspace}
+% สัญลักษณ์ในตารางเปรียบเทียบ (Sarabun ไม่มีอักขระ U+2713
+% จึงใช้เครื่องหมายจากฟอนต์ Zapf Dingbats ของ pifont แทน)
+\usepackage{pifont}
+\newcommand{\yesmark}{\ding{51}}
+\newcommand{\nomark}{\textendash}
+\usepackage{ragged2e}
+\usepackage{framed}
+\usepackage[titles]{tocloft}
+\usepackage{url}
+\usepackage[unicode,colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black]{hyperref}
+
+% Flexible spacing at safe word boundaries also works in headings/bookmarks.
+\DeclareRobustCommand{\thaiwordbreak}{\hspace{0pt plus 0.1em}}
+\pdfstringdefDisableCommands{\def\thaiwordbreak{}}
+
+% Thai word boundaries are supplied by prepare-thai-typesetting.py during the
+% build. Disable Babel's character-level Southeast-Asian fallback so a word
+% never splits across two lines.
+\directlua{Babel.sea_enabled = false}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% --- สารบัญ: จุดนำสายตา (dot leaders) สม่ำเสมอทุกระดับ --------------------------
+% cftdotsep มาตรฐาน (4.5) ทำให้จุดห่างเกินในสารบัญรูปซึ่ง caption ยาว
+% ลดเหลือ 2.5 ให้จุดถี่สม่ำเสมอทั้งสารบัญ สารบัญรูป และสารบัญตาราง
+\renewcommand{\cftdotsep}{2.5}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+\setcounter{tocdepth}{1}
+\hypersetup{bookmarksdepth=3}
+
+% --- การแบ่งบรรทัดของรหัส (โค้ด/ชื่อไฟล์) ------------------------------------
+% \code/\path กินช่องว่าง ดังนั้นคำสั่งแบบเว้นวรรคต้องใช้ \texttt
+% ไม่อนุญาตให้ตัดรหัสกลางคำโดยไม่ตั้งใจ ยกเว้นจุดที่กำหนดไว้
+\newcommand{\codebreaks}{\do\.\do\_\do\:\do\/\do\-\do\;}
+\newcommand{\code}[1]{\bgroup\def\UrlBreaks{\codebreaks}\path{#1}\egroup}
+
+% --- รูปแบบย่อหน้า -----------------------------------------------------------
+\setlength{\parindent}{1.1cm}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{3em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.45}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Justify prose using stretch distributed over dictionary-approved Thai word
+% boundaries. Table columns keep their explicit alignment.
+\justifying
+\setlength{\parindent}{1.1cm}
+
+% --- คำสั่ง \texttt สำหรับป้ายกำกับภาษาไทย ----------------------------------
+% CommitMono มีเฉพาะอักษรละติน จึงไม่สามารถแสดงภาษาไทยได้
+% คำสั่ง \texttt ในคู่มือใช้แสดงป้ายกำกับ/ชื่อปุ่มภาษาไทยเป็นหลัก
+% จึงนิยามให้ใช้ฟอนต์เนื้อหา (Sarabun) แบบหนาแทน ซึ่งรองรับทั้งไทยและละติน
+% ส่วนรหัส/ชื่อไฟล์ที่เป็นอักษรละตินล้วนให้ใช้ \code (CommitMono) แทน
+\renewcommand{\texttt}[1]{\textbf{#1}}
+
+% --- การนับหัวข้อและรูป/ตาราง -------------------------------------------------
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+% ไฟล์แต่ละบทเขียนด้วย \mychapter + \section/\subsection เพื่อให้อ่าน source ง่าย
+% แต่ในเอกสารจริงต้องเป็นลำดับ บท > หัวข้อ > หัวข้อย่อย ไม่ใช่รายการต่อเนื่อง 1--82
+\let\manualchaptercommand\section
+\let\manualsectioncommand\subsection
+\let\manualsubsectioncommand\subsubsection
+\RenewDocumentCommand{\section}{s m}{%
+  \IfBooleanTF{#1}{\manualsectioncommand*{#2}}{\manualsectioncommand{#2}}%
+}
+\RenewDocumentCommand{\subsection}{s m}{%
+  \IfBooleanTF{#1}{\manualsubsectioncommand*{#2}}{\manualsubsectioncommand{#2}}%
+}
+\newcommand{\mychapter}[1]{%
+  \clearpage
+  \refstepcounter{section}%
+  \phantomsection
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \markboth{#1}{#1}%
+  \noindent{\Large\bfseries \thesection\par}%
+  \vspace{0.3em}%
+  \noindent{\Huge\bfseries #1\par}%
+  \vspace{1.1em}%
+}
+
+% เวอร์ชันควบคุมจุดขึ้นบรรทัดใหม่ของชื่อบทเอง โดยให้สารบัญใช้ชื่อเต็มเสมอ
+% \mychapterlong{ชื่อในสารบัญ}{ชื่อที่แสดงบนหัวบท (ใส่ \\ ได้)}
+\newcommand{\mychapterlong}[2]{%
+  \clearpage
+  \refstepcounter{section}%
+  \phantomsection
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \markboth{#1}{#1}%
+  \noindent{\Large\bfseries \thesection\par}%
+  \vspace{0.3em}%
+  \noindent{\Huge\bfseries #2\par}%
+  \vspace{1.1em}%
+}
+
+% --- สไตล์เฉพาะของคู่มือ ------------------------------------------------------
+% ขั้นตอนแบบเรียงลำดับ
+\newenvironment{steps}{%
+  \begin{enumerate}\setlength{\itemsep}{3pt}\setlength{\parskip}{0pt}%
+}{%
+  \end{enumerate}%
+}
+
+% --- บล็อกผลที่ควรเห็น/ข้อควรระวัง (ใช้เป็น environment) -----------------------
+% กรอบแถบสีซ้ายด้วย framed leftbar: ไม่มีเยื้องย่อหน้า แถบสูงเท่าเนื้อหา
+% ไม่มีช่องว่างบนล่างเกิน และตัดข้ามหน้าได้อย่างถูกต้อง
+% expected = แถบเขียว, caution = แถบแดง
+\newenvironment{expected}{%
+  \par\smallskip\noindent%
+  \def\FrameCommand{{\color{green!55!black}\vrule width 3pt}\hspace{8pt}}%
+  \setlength{\FrameSep}{0pt}%
+  \setlength{\FrameRule}{0pt}%
+  \setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}%
+  \begin{leftbar}\justifying\setlength{\parindent}{0pt}\noindent%
+  {\small\textbf{ผลที่ควรเห็น:} }%
+}{%
+  \end{leftbar}\par%
+}
+
+\newenvironment{caution}{%
+  \par\smallskip\noindent%
+  \def\FrameCommand{{\color{red!70!black}\vrule width 3pt}\hspace{8pt}}%
+  \setlength{\FrameSep}{0pt}%
+  \setlength{\FrameRule}{0pt}%
+  \setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}%
+  \begin{leftbar}\justifying\small\setlength{\parindent}{0pt}\noindent%
+  \textcolor{red!70!black}{\textbf{ข้อควรระวัง:} }%
+}{%
+  \end{leftbar}\par%
+}
+
+% หมายเหตุ = แถบเทากลาง (ข้อมูลเพิ่มเติมที่ไม่ใช่ความเสี่ยง)
+% แยกจาก caution (แดง) เพื่อให้คำเตือนที่สำคัญจริงยังโดดเด่น
+\newenvironment{note}{%
+  \par\smallskip\noindent%
+  \def\FrameCommand{{\color{black!45}\vrule width 3pt}\hspace{8pt}}%
+  \setlength{\FrameSep}{0pt}%
+  \setlength{\FrameRule}{0pt}%
+  \setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}%
+  \begin{leftbar}\justifying\small\setlength{\parindent}{0pt}\noindent%
+  \textcolor{black!60}{\textbf{หมายเหตุ:} }%
+}{%
+  \end{leftbar}\par%
+}
+
+% คำอธิบายภาพ — ใช้ \figcaption ใน figure แทน
+\newcommand{\figcaption}[1]{\caption{#1}}
+
+% คำศัพท์/คำย่อ
+\newcommand{\gloss}[2]{\textbf{#1}: #2}
+
+% การอ้างอิงข้ามบท: \seealso{หมายเลขขั้นตอน/หัวข้อ}
+\newcommand{\seealso}[1]{\par\smallskip{\small ดูเพิ่มเติม: #1}\par}
+
+% ชื่อไฟล์ที่ใช้ในคู่มือ (ไม่ให้ตัดกลาง)
+% ใช้ \texttt (Sarabun หนา) แทน \code เพื่อรองรับชื่อไฟล์ภาษาไทย
+\newcommand{\file}[1]{\texttt{#1}}
+
+% รหัสวิชาเก้าหลัก — ใช้ \texttt (Sarabun หนา) ซึ่งปลอดภัยในคำอธิบายภาพ
+% เนื่องจากรหัสวิชาเป็นตัวเลขล้วน ไม่ต้องใช้ฟอนต์โมโน
+\newcommand{\course}[1]{\texttt{#1}}
+
+% คำสั่งสำหรับแทรกรูปพร้อมคำอธิบาย
+% \manualfigure{ไฟล์}{ความกว้าง}{คำอธิบาย}
+% ใช้ตำแหน่ง [H] เพื่อให้ภาพหน้าจอประกอบขั้นตอนอยู่ติดกับข้อความที่สอนเสมอ
+% ไม่ลอยไปรวมกันท้ายหน้า/ท้ายบทจนเกิดหน้าที่มีแต่รูปกับพื้นที่ว่าง
+\newcommand{\manualfigure}[3]{%
+  \begin{figure}[H]\centering
+    \includegraphics[width=#2]{#1}
+    \caption{#3}
+  \end{figure}%
+}
+
+% --- เมตาดาตาของ PDF --------------------------------------------------------
+\hypersetup{%
+  pdftitle={คู่มือการใช้งานระบบจัดตารางสอบ Exam Scheduler},
+  pdfauthor={Exam Scheduler project},
+  pdflang={th},
+  pdfsubject={คู่มือการใช้งานสำหรับบุคลากรจัดตารางสอบ},
+  pdfkeywords={จัดตารางสอบ, Exam Scheduler, คู่มือ, ไทย}
+}

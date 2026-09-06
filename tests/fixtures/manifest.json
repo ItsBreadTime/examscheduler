@@ -1,0 +1,25 @@
+{
+  "courseSources": [
+    { "path": "04.xlsx", "role": "context", "expectedPrefix": "04" },
+    { "path": "05.xlsx", "role": "context", "expectedPrefix": "05" },
+    { "path": "06.xlsx", "role": "managed", "expectedPrefix": "06" },
+    { "path": "08.xlsx", "role": "context", "expectedPrefix": "08" }
+  ],
+  "rules": "rules.csv",
+  "references": [
+    { "path": "roominfo.csv", "kind": "rooms" },
+    { "path": "proctors.xls", "kind": "proctors" }
+  ],
+  "settings": {
+    "periods": {
+      "midterm": { "start": "2026-08-17", "end": "2026-08-28" },
+      "final": { "start": "2026-10-14", "end": "2026-10-30" }
+    },
+    "sessions": [ { "startMinutes": 540, "endMinutes": 720 }, { "startMinutes": 780, "endMinutes": 960 } ],
+    "fullDay": { "startMinutes": 540, "endMinutes": 960 },
+    "weekendPolicy": "only_if_necessary",
+    "holidays": [],
+    "holidayPolicy": "only_if_necessary",
+    "searchBudget": 20000
+  }
+}

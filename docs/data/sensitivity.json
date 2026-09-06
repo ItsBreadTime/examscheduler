@@ -1,0 +1,644 @@
+{
+  "recordedAt": "2026-09-06T04:17:51.807Z",
+  "note": "Sensitivity of the solver outcome to its fixed heuristic constants. Each variant patches only the student-burden weights and/or the feasibility-budget fraction in a throwaway copy of src/lib; the working tree is never modified. The base variant (10:3, factor 0.6) must reproduce the recorded results exactly before any variant metric is trusted.",
+  "variants": [
+    "base-10-3-f0.6",
+    "weights-5-1",
+    "weights-3-1",
+    "weights-1-0",
+    "feasibility-f0.4",
+    "feasibility-f0.8"
+  ],
+  "results": [
+    {
+      "variant": "base-10-3-f0.6",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 3255,
+      "improvementEvaluations": 14326,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 248,
+        "groupsWithConsecutiveDayExams": 4,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 182,
+      "patchedSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "base-10-3-f0.6",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 55,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 265,
+        "groupsWithConsecutiveDayExams": 23,
+        "peakConcurrentExams": 8,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 546,
+      "patchedSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "base-10-3-f0.6",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 12000,
+      "improvementEvaluations": 8000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 318,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1064,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 13,
+        "weekendExams": 20,
+        "holidayExams": 5,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1563,
+      "patchedSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-5-1",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 5,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 3255,
+      "improvementEvaluations": 14326,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 248,
+        "groupsWithConsecutiveDayExams": 4,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 179,
+      "patchedSolverSha256": "e23e1617782d8ae0351c011c5cebcc229e53fad763225804781ec034ea2fa071",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-5-1",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 5,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 54,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 269,
+        "groupsWithConsecutiveDayExams": 23,
+        "peakConcurrentExams": 8,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 564,
+      "patchedSolverSha256": "e23e1617782d8ae0351c011c5cebcc229e53fad763225804781ec034ea2fa071",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-5-1",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 5,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 12000,
+      "improvementEvaluations": 8000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 320,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1059,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 13,
+        "weekendExams": 20,
+        "holidayExams": 4,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1561,
+      "patchedSolverSha256": "e23e1617782d8ae0351c011c5cebcc229e53fad763225804781ec034ea2fa071",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-3-1",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 3,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 3255,
+      "improvementEvaluations": 14326,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 248,
+        "groupsWithConsecutiveDayExams": 4,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 229,
+      "patchedSolverSha256": "b8519db78b9ec0669624db328f6d75e8092808eed6fab642ebcaf39ea6e89aa7",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-3-1",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 3,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 54,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 265,
+        "groupsWithConsecutiveDayExams": 23,
+        "peakConcurrentExams": 9,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 591,
+      "patchedSolverSha256": "b8519db78b9ec0669624db328f6d75e8092808eed6fab642ebcaf39ea6e89aa7",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-3-1",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 3,
+        "adjacentDay": 1
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 12000,
+      "improvementEvaluations": 8000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 319,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1061,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 13,
+        "weekendExams": 20,
+        "holidayExams": 4,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1489,
+      "patchedSolverSha256": "b8519db78b9ec0669624db328f6d75e8092808eed6fab642ebcaf39ea6e89aa7",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-1-0",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 1,
+        "adjacentDay": 0
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 3255,
+      "improvementEvaluations": 14352,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 287,
+        "groupsWithConsecutiveDayExams": 12,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 265,
+      "patchedSolverSha256": "4e3dce9a66093e578aac3961a63e5205163effe78bf27cf7791bd3e3c6bcc58a",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-1-0",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 1,
+        "adjacentDay": 0
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 54,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 351,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 6,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 474,
+      "patchedSolverSha256": "4e3dce9a66093e578aac3961a63e5205163effe78bf27cf7791bd3e3c6bcc58a",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "weights-1-0",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 1,
+        "adjacentDay": 0
+      },
+      "feasibilityFactor": 0.6,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 12000,
+      "improvementEvaluations": 8000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 312,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1182,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 10,
+        "weekendExams": 24,
+        "holidayExams": 6,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1496,
+      "patchedSolverSha256": "4e3dce9a66093e578aac3961a63e5205163effe78bf27cf7791bd3e3c6bcc58a",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.4",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.4,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 2189,
+      "improvementEvaluations": 14611,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 248,
+        "groupsWithConsecutiveDayExams": 4,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 140,
+      "patchedSolverSha256": "1f38d5f2a1587189487f5195c471ea4cb1089b807f67ee0f01f4788bbd7ff27b",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.4",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.4,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 55,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 265,
+        "groupsWithConsecutiveDayExams": 23,
+        "peakConcurrentExams": 8,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 540,
+      "patchedSolverSha256": "1f38d5f2a1587189487f5195c471ea4cb1089b807f67ee0f01f4788bbd7ff27b",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.4",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.4,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 8000,
+      "improvementEvaluations": 12000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 320,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1065,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 13,
+        "weekendExams": 20,
+        "holidayExams": 4,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1580,
+      "patchedSolverSha256": "1f38d5f2a1587189487f5195c471ea4cb1089b807f67ee0f01f4788bbd7ff27b",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.8",
+      "fixture": "เล็ก",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.8,
+      "scheduledManagedEvents": 82,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 4322,
+      "improvementEvaluations": 13945,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 4,
+      "quality": {
+        "scheduledManagedEvents": 82,
+        "sameDayPairs": 76,
+        "groupsWithSameDayExams": 4,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 248,
+        "groupsWithConsecutiveDayExams": 4,
+        "peakConcurrentExams": 3,
+        "weekendExams": 3,
+        "holidayExams": 1,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 285,
+      "patchedSolverSha256": "23ba7c600a24d7a854e89f6d98ba47ebcb539bfa7ed94a452192877f06bae905",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.8",
+      "fixture": "กลาง",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.8,
+      "scheduledManagedEvents": 200,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 194,
+      "improvementEvaluations": 19806,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": true,
+      "improvedEventLowerBound": 0,
+      "quality": {
+        "scheduledManagedEvents": 200,
+        "sameDayPairs": 55,
+        "groupsWithSameDayExams": 15,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 265,
+        "groupsWithConsecutiveDayExams": 23,
+        "peakConcurrentExams": 8,
+        "weekendExams": 0,
+        "holidayExams": 0,
+        "daysUsed": {
+          "midterm": 9,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 529,
+      "patchedSolverSha256": "23ba7c600a24d7a854e89f6d98ba47ebcb539bfa7ed94a452192877f06bae905",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    },
+    {
+      "variant": "feasibility-f0.8",
+      "fixture": "ใหญ่",
+      "burdenWeights": {
+        "sameDay": 10,
+        "adjacentDay": 3
+      },
+      "feasibilityFactor": 0.8,
+      "scheduledManagedEvents": 378,
+      "searchBudget": 20000,
+      "budgetExhausted": false,
+      "visitedNodes": 16000,
+      "improvementEvaluations": 4000,
+      "coverageOptimal": true,
+      "avoidedDaysOptimal": false,
+      "improvedEventLowerBound": 12,
+      "quality": {
+        "scheduledManagedEvents": 378,
+        "sameDayPairs": 326,
+        "groupsWithSameDayExams": 24,
+        "groupsWithThreeSameDayExams": 0,
+        "consecutiveDayPairs": 1075,
+        "groupsWithConsecutiveDayExams": 24,
+        "peakConcurrentExams": 12,
+        "weekendExams": 19,
+        "holidayExams": 6,
+        "daysUsed": {
+          "midterm": 12,
+          "final": 13
+        }
+      },
+      "wallMilliseconds": 1354,
+      "patchedSolverSha256": "23ba7c600a24d7a854e89f6d98ba47ebcb539bfa7ed94a452192877f06bae905",
+      "originalSolverSha256": "59caab147b0156cd1924898ca21a364f30bffe65c458e7b8325174840fc20ae1"
+    }
+  ]
+}

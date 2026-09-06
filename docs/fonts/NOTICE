@@ -1,0 +1,19 @@
+Third-party font notices
+========================
+
+Sarabun
+  Files: Sarabun-Regular.ttf, Sarabun-Bold.ttf, Sarabun-Italic.ttf,
+         Sarabun-BoldItalic.ttf
+  Copyright: 2018 The Sarabun Project Authors
+  Source: https://github.com/cadsondemak/Sarabun
+  License: SIL Open Font License, Version 1.1 (OFL-Sarabun.txt)
+
+Commit Mono
+  Files: CommitMono-400-Regular.otf, CommitMono-400-Italic.otf,
+         CommitMono-700-Regular.otf, CommitMono-700-Italic.otf
+  Copyright: 2023 Eigil Nikolajsen
+  Source: https://github.com/eigilnikolajsen/commit-mono
+  License: SIL Open Font License, Version 1.1 (OFL-CommitMono.txt)
+
+These font licenses apply to the font software. The repository's top-level
+LICENSE applies to the Exam Scheduler software and does not relicense the fonts.

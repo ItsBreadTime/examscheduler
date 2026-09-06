@@ -1,0 +1,80 @@
+{
+  "capturedAt": "2026-09-06T15:11:38.000Z",
+  "browser": {
+    "name": "Chrome (headless, OpenChrome)",
+    "version": "152.0.0.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36"
+  },
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "devicePixelRatio": 1
+  },
+  "zoom": "100%",
+  "uiLanguage": "th",
+  "languageNote": "Thai is the application default when no language is stored (i18n.svelte.ts). Application storage (localStorage, sessionStorage and IndexedDB) was cleared before the first import, so the UI rendered Thai without a manual switch.",
+  "appUrl": "https://schedule.breadtm.xyz/",
+  "deploymentIdentity": {
+    "checkedAt": "2026-09-06T15:07:00.000Z",
+    "servedAssets": { "js": "/assets/index-D1MResGu.js", "css": "/assets/index-Da22cc1D.css" },
+    "localBuildAssets": { "js": "/assets/index-D1MResGu.js", "css": "/assets/index-Da22cc1D.css" },
+    "matchesLocalBuild": true,
+    "cspMetaMatchesLocalBuild": true,
+    "note": "The deployed SPA serving this capture is byte-identical to a fresh build of repository HEAD (verified by Vite content-hashed asset filename equality and CSP meta equality). API-level contract checks for the same deployment are recorded in docs/data/cloud-verification.json."
+  },
+  "fixtures": {
+    "clean": {
+      "dir": "docs/data/clean",
+      "files": {
+        "managed.xlsx": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee",
+        "context.xlsx": "ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e",
+        "rules.csv": "b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee",
+        "roominfo.csv": "338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec",
+        "manifest.json": "df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+      },
+      "directoryHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    }
+  },
+  "screenshots": [
+    {
+      "file": "cloud-save-share.png",
+      "fixture": "clean",
+      "view": "บันทึกและแชร์ (Save & share on the deployed system)",
+      "navPath": [
+        "Open https://schedule.breadtm.xyz/ with cleared storage",
+        "Add managed.xlsx (จัดอัตโนมัติ) and context.xlsx (จัดไปแล้ว) as course sources, add rules.csv as the rules file",
+        "Set midterm 17/08/2026-28/08/2026 and final 14/10/2026-30/10/2026, add holiday 20/08/2026",
+        "Click นำเข้าและตรวจสอบ, then จัดตาราง (41/41 midterm and 41/41 final scheduled)",
+        "Click บันทึกและแชร์ in the nav rail, name the project ตารางสอบชุดข้อมูลหลัก กันยายน 2569, click บันทึกขึ้นคลาวด์ (project saved to the production server: proj_b61c27a92eeb, rev_8775d4c7c082)",
+        "Create a ตารางสอบ (schedule) share link, revoke an earlier one, then capture the Save & share view showing the connected project, the owner capability row, one revoked and one active schedule share"
+      ],
+      "imageSha256": "6a20a3dc073d0fbac4cef95e73c9083a3336d467ad4faa45cc1af7fe8487a948",
+      "imagePixels": { "width": 1920, "height": 1080 },
+      "captureSession": "2026-09-06T15:11:01.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": { "width": 1920, "height": 1080, "devicePixelRatio": 1 },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "cloud-share-viewer.png",
+      "fixture": "clean",
+      "view": "มุมมองที่แชร์ (Read-only share view opened from a share link)",
+      "navPath": [
+        "From the saved project's Save & share view, use the created ตารางสอบ share link (share id shr_5cb62e5ac08b; the secret is never recorded here)",
+        "Open the link in a fresh tab: the app boots straight into the share view (fragment #/share/<id>/<secret>)",
+        "Verify the scoped rendering: banner มุมมองที่แชร์ · ตารางสอบที่แชร์ · rev_8775d4c7c082 · อ่านอย่างเดียว, overview shows 41/41 and 41/41, no proctor roster and no source detail are exposed",
+        "Capture the full page (taller than one viewport)"
+      ],
+      "imageSha256": "e52e8f81e4da45eef1115687b6ba9da734752821286cef2380afe077f8010003",
+      "imagePixels": { "width": 1909, "height": 1463 },
+      "captureSession": "2026-09-06T15:11:38.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": { "width": 1920, "height": 1080, "devicePixelRatio": 1 },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    }
+  ],
+  "manifestVersion": 2,
+  "manifestNote": "Cloud-view evidence captured against the production deployment https://schedule.breadtm.xyz/, recorded separately from the 2026-09-05 localhost screenshot set (docs/screenshots/screenshots.json) so the original 5-September anchor stays intact. Every screenshot entry carries its own image SHA-256, pixel size, fixture hash, locale, browser version, viewport and capture timestamp. Share secrets used to open the share view are deliberately not recorded: the share id is recorded, the secret is omitted exactly as in docs/data/cloud-verification.json."
+}

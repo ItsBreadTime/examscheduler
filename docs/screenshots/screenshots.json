@@ -1,0 +1,247 @@
+{
+  "capturedAt": "2026-09-05T16:54:00.000Z",
+  "browser": {
+    "name": "Chrome (headless, OpenChrome)",
+    "version": "152.0.0.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36"
+  },
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "devicePixelRatio": 1
+  },
+  "zoom": "100%",
+  "uiLanguage": "th",
+  "languageNote": "Thai is the application default when no language is stored (i18n.svelte.ts). Application storage (localStorage, sessionStorage and IndexedDB) was cleared before the first import, so the UI rendered Thai without a manual switch.",
+  "appUrl": "http://127.0.0.1:5173/",
+  "applicationSnapshot": {
+    "capturedAt": "2026-09-05T15:41:01.122Z",
+    "headCommit": "099de0bfc57ad6d971f25645aa0f41701269f18f",
+    "branch": "main"
+  },
+  "fixtures": {
+    "clean": {
+      "dir": "docs/data/clean",
+      "files": {
+        "managed.xlsx": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee",
+        "context.xlsx": "ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e",
+        "rules.csv": "b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee",
+        "roominfo.csv": "338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec",
+        "manifest.json": "df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+      },
+      "directoryHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    "staleRule": {
+      "dir": "docs/data/errors/stale-rule",
+      "files": {
+        "managed.xlsx": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee",
+        "context.xlsx": "ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e",
+        "rules.csv": "0019e15c5ddb19f891adc13be1513f2177c30836d71595db55ac03216a3ff722",
+        "roominfo.csv": "338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec",
+        "manifest.json": "df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+      },
+      "directoryHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-0019e15c5ddb19f891adc13be1513f2177c30836d71595db55ac03216a3ff722-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    }
+  },
+  "screenshots": [
+    {
+      "file": "sources.png",
+      "fixture": "clean",
+      "view": "ข้อมูลและการตั้งค่า (Sources / setup)",
+      "navPath": [
+        "Open http://127.0.0.1:5173/ with cleared storage",
+        "Add managed.xlsx (จัดอัตโนมัติ) and context.xlsx (จัดไปแล้ว) as course sources",
+        "Add rules.csv as the scheduling-rules file",
+        "Set midterm 17/08/2026-28/08/2026 and final 14/10/2026-30/10/2026",
+        "Set holiday 20/08/2026",
+        "Capture the Sources view"
+      ],
+      "imageSha256": "99c54001f97a35227c51006b107c0fcda2d46fdc20bb69e61dd013c343b454f1",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "review.png",
+      "fixture": "clean",
+      "view": "ตรวจสอบข้อมูล (Import review)",
+      "navPath": [
+        "From Sources, click นำเข้าและตรวจสอบ (import & inspect)",
+        "The app auto-navigates to the Review view",
+        "Capture the Review view showing imported files, provenance hashes and the calendar summary"
+      ],
+      "imageSha256": "2e7de92188c36a8e4a23af662d72594955220f73deb8fa8a253cebdbeaf10914",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "overview.png",
+      "fixture": "clean",
+      "view": "ภาพรวม (Overview)",
+      "navPath": [
+        "From Review, click จัดตาราง (generate schedule)",
+        "The app auto-navigates to the Overview view after scheduling",
+        "Capture the Overview showing 41/41 midterm and 41/41 final scheduled, 0 errors, 2 warnings"
+      ],
+      "imageSha256": "ef31f96155d9acdb95cdcda2db54f13e7fe21008f5f6428217aefe53286091bd",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "exams.png",
+      "fixture": "clean",
+      "view": "รายวิชา (Examinations)",
+      "navPath": [
+        "From Overview, click รายวิชา in the nav rail",
+        "Capture the Exams view showing the examination table with managed timings"
+      ],
+      "imageSha256": "dcf887e53b20d15644a0b7d80cef4328f93642eaa63855300bc04336a4a63844",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "calendar.png",
+      "fixture": "clean",
+      "view": "ปฏิทิน (Calendar)",
+      "navPath": [
+        "From Exams, click ปฏิทิน in the nav rail",
+        "Capture the full-page Calendar showing weeks as intact Sunday-first rows, fixed days marked, and full-day exams spanning 09:00-16:00"
+      ],
+      "imageSha256": "7700a9d86ec1f50f827028890de24e485cf922ee68653c5659d39594242f1784",
+      "imagePixels": {
+        "width": 1909,
+        "height": 1254
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "groups.png",
+      "fixture": "clean",
+      "view": "กลุ่มนักศึกษา (Student groups)",
+      "navPath": [
+        "From Calendar, click กลุ่มนักศึกษา in the nav rail",
+        "Click the AGE-1R-DE-RA group chip to select it",
+        "Capture the Groups view showing that group's personal exam timetable"
+      ],
+      "imageSha256": "240f89bb179d612ed7a5a29ea123189773f3458498ab6d706345f79325cbb05c",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "issues-stale-rule.png",
+      "fixture": "staleRule",
+      "view": "ข้อควรตรวจสอบ (Issues)",
+      "navPath": [
+        "Navigate back to Sources (ข้อมูลและการตั้งค่า)",
+        "Replace rules.csv with docs/data/errors/stale-rule/rules.csv",
+        "Click นำเข้าและตรวจสอบ, then click จัดตาราง to regenerate",
+        "Click ข้อควรตรวจสอบ in the nav rail",
+        "Capture the Issues view showing the STALE_RULE_REFERENCE warning (ไม่มีผลลัพธ์ในข้อมูลจริง for code 099999999) plus other warnings"
+      ],
+      "imageSha256": "e31bb6ccd2b85058014affe666e77f2b855930246b59f8b27e10741bf40626e3",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-0019e15c5ddb19f891adc13be1513f2177c30836d71595db55ac03216a3ff722-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    },
+    {
+      "file": "audit.png",
+      "fixture": "clean",
+      "view": "ตรวจสอบ (Audit) — appendix",
+      "navPath": [
+        "Restore docs/data/clean/rules.csv in Sources",
+        "Click นำเข้าและตรวจสอบ, then click จัดตาราง to regenerate the clean schedule",
+        "Click ตรวจสอบ in the nav rail",
+        "The Audit view auto-fills from the current result",
+        "Capture the Audit view showing checksum hashes, the validation report (4 checks passing) and quality metrics"
+      ],
+      "imageSha256": "64764149d23c7989ef934b033dfccc862814973e46708a9da909b7e539e2eead",
+      "imagePixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "captureSession": "2026-09-05T16:54:00.000Z",
+      "locale": "th",
+      "browserVersion": "Chrome (headless, OpenChrome) 152.0.0.0",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "fixtureHash": "a57023add78dfdd1f3b1fa735302577e5f7b4e23f2a60c16fc67797145c088ee-ff13386b56240dadb7bc201ba9537f2ddc75590fee15b9d70eb8deafc8d6299e-b55892b962670889afde5e5ddbfc648b4477c63efbe31cb82f69b582cf9bc3ee-338cb8a346c2b8e7fefcea2c921fa4e2b4772e7ef45285bd23aa704bfe1d01ec-df4ab697131ebbbfdfe365ce22175ece19ac8ff996a053bb698c688371985f32"
+    }
+  ],
+  "manifestVersion": 2,
+  "manifestNote": "Every screenshot entry carries its own image SHA-256, pixel size, fixture, fixture hash, locale, browser version, viewport and capture-session timestamp, so each figure in the report can be traced on its own without reading the protocol section."
+}

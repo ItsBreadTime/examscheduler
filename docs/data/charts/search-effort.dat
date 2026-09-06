@@ -1,0 +1,4 @@
+scale courses visitedNodes improvementEvaluations budget used utilization
+small 41 3255 14326 20000 17581 0.87905
+medium 100 194 19806 20000 20000 1
+large 189 12000 8000 20000 20000 1
